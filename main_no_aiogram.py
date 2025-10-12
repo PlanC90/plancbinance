@@ -660,6 +660,9 @@ def process_message(update):
         elif text.startswith("/stop_monitor"):
             logger.info("Handling /stop_monitor command")
             handle_stop_monitor_command(chat_id, text)
+        elif text.startswith("/test"):
+            logger.info("Handling /test command")
+            send_message(chat_id, "✅ Bot is working! Code updated successfully.")
         else:
             logger.info("Unknown command received")
             send_message(chat_id, "❌ Unknown command. Use /start for help.")
