@@ -643,6 +643,11 @@ def process_message(update):
         
         logger.info(f"Processing message from chat {chat_id}: {text}")
         
+        # Only respond to commands that start with /
+        if not text.startswith("/"):
+            logger.info("Ignoring non-command message")
+            return
+        
         if text.startswith("/start"):
             logger.info("Handling /start command")
             handle_start_command(chat_id)
