@@ -8,7 +8,7 @@ import datetime
 import matplotlib.pyplot as plt
 from dotenv import load_dotenv
 import google.generativeai as genai
-from flask import Flask
+from flask import Flask, request
 from threading import Thread
 import matplotlib
 import json
