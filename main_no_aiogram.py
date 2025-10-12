@@ -410,6 +410,9 @@ def handle_monitor_command(chat_id, text):
         
         symbol = parts[1].lower()
         
+        # Send processing message
+        send_message(chat_id, f"🔄 Processing monitoring request for {symbol.upper()}...")
+        
         # Parse minutes parameter
         minutes = 5  # default
         if len(parts) > 2:
