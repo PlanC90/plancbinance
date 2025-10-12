@@ -442,9 +442,12 @@ def handle_monitor_command(chat_id, text):
             'coin_id': coin_id
         }
         
-        send_message(chat_id, f"✅ Started monitoring {symbol.upper()}\n"
-                              f"📊 Checking every {minutes} minutes\n"
-                              f"🛑 Use /stop_monitor {symbol} to stop")
+        send_message(chat_id, f"✅ **MONITORING SETUP SUCCESSFUL!**\n\n"
+                              f"🪙 **Coin:** {symbol.upper()}\n"
+                              f"⏰ **Interval:** Every {minutes} minutes\n"
+                              f"📊 **Status:** Active monitoring started\n"
+                              f"🛑 **Stop:** Use /stop_monitor {symbol}\n\n"
+                              f"🎯 You will receive automatic signals when trading opportunities arise!")
         logger.info(f"Started monitoring {symbol} for chat {chat_id} (every {minutes} minutes)")
         
     except Exception as e:
