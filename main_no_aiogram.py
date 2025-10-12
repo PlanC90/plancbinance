@@ -398,9 +398,12 @@ Get started with /signal or /monitor! 🚀
 def handle_monitor_command(chat_id, text):
     """Handle /monitor command"""
     logger.info(f"Received /monitor: {text}")
+    logger.info(f"Chat ID: {chat_id}")
     try:
         parts = text.split()
+        logger.info(f"Parts: {parts}")
         if len(parts) < 2:
+            logger.warning("Not enough parts in /monitor command")
             send_message(chat_id, "❌ Usage: /monitor <coin> [minutes]\n"
                                   "📝 Example: /monitor btc 10 (every 10 minutes)")
             return
@@ -627,20 +630,30 @@ def process_message(update):
         chat_id = message.get("chat", {}).get("id")
         text = message.get("text", "")
         
+        logger.info(f"Raw update: {update}")
+        logger.info(f"Message: {message}")
+        logger.info(f"Chat ID: {chat_id}, Text: {text}")
+        
         if not chat_id or not text:
+            logger.warning("Missing chat_id or text")
             return
         
         logger.info(f"Processing message from chat {chat_id}: {text}")
         
         if text.startswith("/start"):
+            logger.info("Handling /start command")
             handle_start_command(chat_id)
         elif text.startswith("/signal"):
+            logger.info("Handling /signal command")
             handle_signal_command(chat_id, text)
         elif text.startswith("/monitor"):
+            logger.info("Handling /monitor command")
             handle_monitor_command(chat_id, text)
         elif text.startswith("/stop_monitor"):
+            logger.info("Handling /stop_monitor command")
             handle_stop_monitor_command(chat_id, text)
         else:
+            logger.info("Unknown command received")
             send_message(chat_id, "❌ Unknown command. Use /start for help.")
             
     except Exception as e:
