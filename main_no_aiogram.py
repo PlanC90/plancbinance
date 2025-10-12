@@ -650,35 +650,52 @@ def main():
     logger.info("Starting MemeX Signal Bot on Render")
     test_api_connectivity()
     
-    # Setup webhook
-    if setup_webhook():
-        logger.info("Using webhook mode - bot will receive updates via webhook")
-    else:
-        logger.warning("Failed to setup webhook, falling back to polling")
-    
-    # Start Flask server (this will handle webhook requests)
+    # Start Flask server first for health checks
     port = int(os.environ.get('PORT', 8080))
     logger.info(f"Starting Flask server on port {port}")
     
-    try:
-        # Start monitoring check in background
-        import threading
-        def monitoring_loop():
-            while True:
-                try:
-                    check_monitoring()
-                    time.sleep(60)  # Check every minute
-                except Exception as e:
-                    logger.error(f"Monitoring loop error: {e}")
-                    time.sleep(60)
-        
-        monitoring_thread = threading.Thread(target=monitoring_loop, daemon=True)
-        monitoring_thread.start()
-        logger.info("Monitoring thread started")
-        
-        # Start Flask app
+    # Start Flask in background thread
+    import threading
+    def flask_thread():
         app.run(host='0.0.0.0', port=port, threaded=True)
-        
+    
+    flask_t = threading.Thread(target=flask_thread, daemon=True)
+    flask_t.start()
+    logger.info("Flask server started in background")
+    
+    # Start monitoring check in background
+    def monitoring_loop():
+        while True:
+            try:
+                check_monitoring()
+                time.sleep(60)  # Check every minute
+            except Exception as e:
+                logger.error(f"Monitoring loop error: {e}")
+                time.sleep(60)
+    
+    monitoring_thread = threading.Thread(target=monitoring_loop, daemon=True)
+    monitoring_thread.start()
+    logger.info("Monitoring thread started")
+    
+    # Use polling instead of webhook for now
+    logger.info("Using polling mode - bot will check for updates")
+    last_update_id = None
+    
+    try:
+        while True:
+            updates = get_updates(last_update_id)
+            if not updates or not updates.get("ok"):
+                logger.error("Failed to get updates")
+                time.sleep(5)
+                continue
+            
+            for update in updates.get("result", []):
+                if last_update_id is None or update["update_id"] > last_update_id:
+                    last_update_id = update["update_id"]
+                    process_message(update)
+            
+            time.sleep(1)
+            
     except KeyboardInterrupt:
         logger.info("Bot stopped by user")
     except Exception as e:
