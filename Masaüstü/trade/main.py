@@ -24,6 +24,13 @@ except Exception:
     verify_license = None
     PUBLIC_KEY_B64 = ""
 
+# updater
+try:
+    from updater import SoftwareUpdater, UpdateDialog
+except Exception:
+    SoftwareUpdater = None
+    UpdateDialog = None
+
 class BinanceFuturesBot:
     def __init__(self, root):
         self.root = root
@@ -96,6 +103,8 @@ class BinanceFuturesBot:
         self.start_market_monitor()
         # İlk sembol listesini yükle
         self.update_symbol_list()
+        # Otomatik güncelleme kontrolü (program yüklendikten sonra)
+        self.auto_check_updates_on_startup()
         
     def setup_ui(self):
         # Ana stil konfigürasyonu
@@ -442,6 +451,8 @@ class BinanceFuturesBot:
         self.save_settings_btn.pack(side=tk.LEFT, padx=(4,4))
         self.refresh_btn = ttk.Button(center_bar, text="⟳ Yenile", command=self.update_symbol_list, style='Secondary.TButton')
         self.refresh_btn.pack(side=tk.LEFT, padx=(4,4))
+        self.update_btn = ttk.Button(center_bar, text="📦 Güncelle", command=self.check_for_updates, style='Secondary.TButton')
+        self.update_btn.pack(side=tk.LEFT, padx=(4,4))
         
         # Treeview for positions
         columns = ("Symbol", "Side", "Size", "Entry Price", "PNL")
@@ -1134,6 +1145,83 @@ class BinanceFuturesBot:
             self.log_message("Toplam PNL kaydedildi: totals_history.csv")
         except Exception as e:
             self.log_message(f"Toplam PNL yazılamadı: {e}")
+    
+    def check_for_updates(self):
+        """Güncelleme kontrolü yap ve diyaloğu göster"""
+        try:
+            if not SoftwareUpdater or not UpdateDialog:
+                messagebox.showinfo("Bilgi", "Güncelleme modülü yüklenemedi.")
+                return
+            
+            self.log_message("Güncelleme kontrol ediliyor...")
+            
+            def check_updates_thread():
+                try:
+                    updater = SoftwareUpdater()
+                    has_update, message = updater.check_for_updates()
+                    
+                    # Ana thread'de UI'yi güncelle
+                    self.root.after(0, lambda: self.show_update_dialog(updater, has_update, message))
+                    
+                except Exception as e:
+                    error_msg = f"Güncelleme kontrolü hatası: {e}"
+                    self.root.after(0, lambda: messagebox.showerror("Hata", error_msg))
+            
+            # Thread'de kontrol et (UI bloke olmasın)
+            threading.Thread(target=check_updates_thread, daemon=True).start()
+            
+        except Exception as e:
+            messagebox.showerror("Hata", f"Güncelleme kontrolü başlatılamadı: {e}")
+    
+    def show_update_dialog(self, updater, has_update, message):
+        """Güncelleme diyaloğunu göster"""
+        try:
+            dialog = UpdateDialog(self.root, updater)
+            dialog.show_update_dialog(has_update, message)
+            
+            if has_update:
+                self.log_message("Yeni güncelleme mevcut!")
+            else:
+                self.log_message("Yazılım güncel.")
+                
+        except Exception as e:
+            messagebox.showerror("Hata", f"Güncelleme diyaloğu gösterilemedi: {e}")
+    
+    def auto_check_updates_on_startup(self):
+        """Program başlangıcında otomatik güncelleme kontrolü"""
+        try:
+            if not SoftwareUpdater or not UpdateDialog:
+                return
+            
+            def auto_check():
+                try:
+                    # 3 saniye bekle (program tam yüklensin)
+                    time.sleep(3)
+                    
+                    updater = SoftwareUpdater()
+                    has_update, message = updater.check_for_updates()
+                    
+                    if has_update:
+                        # Güncelleme varsa kullanıcıya sor
+                        def ask_user():
+                            result = messagebox.askyesno(
+                                "Güncelleme Mevcut", 
+                                f"{message}\n\nGüncellemeyi şimdi yüklemek istiyor musunuz?",
+                                parent=self.root
+                            )
+                            if result:
+                                self.show_update_dialog(updater, has_update, message)
+                        
+                        self.root.after(0, ask_user)
+                        
+                except Exception as e:
+                    print(f"Otomatik güncelleme kontrolü hatası: {e}")
+            
+            # Thread'de otomatik kontrol et
+            threading.Thread(target=auto_check, daemon=True).start()
+            
+        except Exception as e:
+            print(f"Otomatik güncelleme kontrolü başlatılamadı: {e}")
     
     def update_symbol_list(self):
         try:
