@@ -91,6 +91,7 @@ TRANSLATIONS = {
         'auto_balance_pct': 'Auto Balance (%):',
         'auto_on': 'Auto Trade: On',
         'auto_off': 'Auto Trade: Off',
+        'update_available': 'Update Available!',
     },
     'tr': {
         'connect': 'Bağlan',
@@ -148,6 +149,7 @@ TRANSLATIONS = {
         'auto_balance_pct': 'Oto Bakiye (%):',
         'auto_on': 'Oto Trade: Açık',
         'auto_off': 'Oto Trade: Kapalı',
+        'update_available': 'Güncelleme Bekliyor!',
     },
 }
 

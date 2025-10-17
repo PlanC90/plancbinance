@@ -71,6 +71,10 @@ class BinanceFuturesBot:
         self.top100_last_fetch = 0  # epoch seconds
         self.market_interval_seconds = 60
         
+        # Update notification
+        self.update_available = False
+        self.update_warning_label = None
+        
         # Auto trade control
         self.auto_trade_enabled = False
         self.last_auto_action_time = 0
@@ -453,6 +457,12 @@ class BinanceFuturesBot:
         self.refresh_btn.pack(side=tk.LEFT, padx=(4,4))
         self.update_btn = ttk.Button(center_bar, text="📦 Güncelle", command=self.check_for_updates, style='Secondary.TButton')
         self.update_btn.pack(side=tk.LEFT, padx=(4,4))
+        
+        # Güncelleme uyarı metni (başlangıçta gizli)
+        self.update_warning_label = tk.Label(center_bar, text="", 
+                                           bg='#0a0a0a', fg='#ef4444', 
+                                           font=('Segoe UI', 10, 'bold'))
+        self.update_warning_label.pack(side=tk.LEFT, padx=(8,4))
         
         # Treeview for positions
         columns = ("Symbol", "Side", "Size", "Entry Price", "PNL")
@@ -1181,11 +1191,30 @@ class BinanceFuturesBot:
             
             if has_update:
                 self.log_message("Yeni güncelleme mevcut!")
+                self.show_update_warning(True)
             else:
                 self.log_message("Yazılım güncel.")
+                self.show_update_warning(False)
                 
         except Exception as e:
             messagebox.showerror("Hata", f"Güncelleme diyaloğu gösterilemedi: {e}")
+    
+    def show_update_warning(self, show):
+        """Güncelleme uyarısını göster/gizle"""
+        try:
+            if not self.update_warning_label:
+                return
+                
+            if show:
+                warning_text = self.tr('update_available')
+                self.update_warning_label.config(text=warning_text)
+                self.update_available = True
+            else:
+                self.update_warning_label.config(text="")
+                self.update_available = False
+                
+        except Exception as e:
+            print(f"Güncelleme uyarısı gösterme hatası: {e}")
     
     def auto_check_updates_on_startup(self):
         """Program başlangıcında otomatik güncelleme kontrolü"""
@@ -1202,6 +1231,9 @@ class BinanceFuturesBot:
                     has_update, message = updater.check_for_updates()
                     
                     if has_update:
+                        # Güncelleme uyarısını göster
+                        self.root.after(0, lambda: self.show_update_warning(True))
+                        
                         # Güncelleme varsa kullanıcıya sor
                         def ask_user():
                             result = messagebox.askyesno(
@@ -1213,6 +1245,9 @@ class BinanceFuturesBot:
                                 self.show_update_dialog(updater, has_update, message)
                         
                         self.root.after(0, ask_user)
+                    else:
+                        # Güncelleme uyarısını gizle
+                        self.root.after(0, lambda: self.show_update_warning(False))
                         
                 except Exception as e:
                     print(f"Otomatik güncelleme kontrolü hatası: {e}")
