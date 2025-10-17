@@ -12,7 +12,7 @@ import zipfile
 from datetime import datetime
 
 class SoftwareUpdater:
-    def __init__(self, repo_owner="PlanC90", repo_name="MEMEXSINYAL", current_version="1.0.0"):
+    def __init__(self, repo_owner="PlanC90", repo_name="tradebot", current_version="1.0.0"):
         self.repo_owner = repo_owner
         self.repo_name = repo_name
         self.current_version = current_version
@@ -117,7 +117,7 @@ class SoftwareUpdater:
             with zipfile.ZipFile(zip_path, 'r') as zip_ref:
                 zip_ref.extractall(extract_dir)
             
-            # Ana dizini bul (MEMEXSINYAL-master)
+            # Ana dizini bul (tradebot-master)
             extracted_folders = os.listdir(extract_dir)
             if not extracted_folders:
                 raise Exception("Arşiv içinde dosya bulunamadı")
