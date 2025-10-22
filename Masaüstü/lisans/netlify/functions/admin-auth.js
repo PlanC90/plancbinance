@@ -1,4 +1,4 @@
-exports.handler = async (event, context) => {
+const handler = async (event, context) => {
   // CORS headers
   const headers = {
     'Access-Control-Allow-Origin': '*',
@@ -25,7 +25,7 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const { password } = JSON.parse(event.body);
+    const { password } = JSON.parse(event.body || '{}');
 
     if (!password) {
       return {
@@ -61,8 +61,13 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ error: 'Internal server error' })
+      body: JSON.stringify({ 
+        error: 'Internal server error',
+        details: error.message 
+      })
     };
   }
 };
+
+module.exports = { handler };
 
