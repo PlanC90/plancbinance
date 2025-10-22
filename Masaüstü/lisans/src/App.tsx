@@ -61,12 +61,7 @@ function App() {
       </nav>
 
       <main className="relative z-10 container mx-auto px-6 py-12">
-        <a 
-          href="https://planc.space" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="block text-center mb-16 hover:opacity-90 transition-opacity cursor-pointer"
-        >
+        <div className="block text-center mb-16">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl mb-6 shadow-2xl">
             <Bot className="w-12 h-12 text-white" />
           </div>
@@ -76,7 +71,7 @@ function App() {
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Professional Trading Automation with Advanced AI Technology
           </p>
-        </a>
+        </div>
 
         <LicenseForm language={language} />
 
