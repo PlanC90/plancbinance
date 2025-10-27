@@ -1,423 +1,228 @@
-# 🚀 Binance Futures Trading Bot v5
+# PlanC Binance Futures Trading Bot
 
-**Profesyonel seviye otomatik trading botu** - Modern GUI, çoklu dil desteği ve akıllı strateji sistemi ile donatılmış Binance Futures trading platformu.
+[![GitHub release](https://img.shields.io/badge/release-v1.0.0-blue.svg)](https://github.com/PlanC90/plancbinance)
+[![License](https://img.shields.io/badge/license-Commercial-red.svg)](https://license.planc.space/)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/PlanC90/plancbinance)
 
-![Version](https://img.shields.io/badge/version-5.0-blue)
-![Python](https://img.shields.io/badge/python-3.8+-green)
-![License](https://img.shields.io/badge/license-Commercial-orange)
-![Languages](https://img.shields.io/badge/languages-31-purple)
+**Otomatik Kripto Vadeli İşlem Trading Botu**
+
+Binance Futures üzerinde piyasa analizi ve momentum takibi ile otomatik alım-satım yapan profesyonel trading botu.
 
 ---
 
-## ✨ Özellikler
+## 🚀 Özellikler
 
-### 🎨 Modern Kullanıcı Arayüzü
-- ⚫ **Koyu Tema**: Göz yormayan modern dark mode arayüz
-- 📊 **Gerçek Zamanlı Fiyat Kartları**: Seçili coinler için canlı fiyat ve değişim takibi
-- 💰 **Hesap Özeti Kartları**: PNL, toplam fee, işlem sayısı, long/short pozisyonlar
-- 📈 **Pozisyon Tablosu**: Tüm açık pozisyonlarınızı detaylı görüntüleme
-- 🔔 **Durum Banner'ı**: Auto trade, test/live mode ve piyasa durumu göstergesi
-- 💡 **Tooltip Yardım**: Her ayar için detaylı açıklamalar
+### 🤖 Akıllı Trading Sistemi
+- **Otomatik Piyasa Analizi**: Top 100 coin'in momentum analizi
+- **Trend Takibi**: Piyasa yükseliş/düşüş/neutral tespiti
+- **Momentum Kaybı Koruması**: Ani trend değişimlerinde otomatik pozisyon kapatma
+- **Multi-Coin Trading**: 20'ye kadar aynı anda farklı coinlerle işlem yapma
 
-### 🌍 Çoklu Dil Desteği (31 Dil)
-```
-🇹🇷 Türkçe    🇬🇧 English   🇸🇦 العربية    🇨🇳 中文      🇷🇺 Русский
-🇪🇸 Español   🇫🇷 Français  🇩🇪 Deutsch    🇵🇹 Português 🇮🇳 हिन्दी
-🇯🇵 日本語    🇰🇷 한국어     🇮🇹 Italiano   🇳🇱 Nederlands 🇵🇱 Polski
-🇮🇷 فارسی     🇮🇩 Indonesia 🇹🇭 ไทย       🇻🇳 Tiếng Việt 🇺🇦 Українська
-```
-...ve 11 dil daha!
+### 💰 Risk Yönetimi
+- **Stop Loss**: Otomatik zarar durdurma
+- **Take Profit**: Otomatik kar alma
+- **Leverage Kontrolü**: 1x - 20x arası kaldıraç desteği (lisans gerektirir)
+- **Bakiye Yönetimi**: Trade başına bakiye yüzdesi ayarlama
 
-### 🤖 Otomatik Trading Stratejisi
-- **Market Breadth Analizi**: Top 100 coin'in 1 saatlik hareketlerini analiz eder
-- **3-Coin Rule**: Seçili coinlerde 3 tanesi aynı yönde hareket edince trend yakalar
-- **Akıllı Pozisyon Açma**: Piyasa yükselişinde LONG, düşüşünde SHORT pozisyon açar
-- **Otomatik Kapama**: Target PNL, Stop Loss veya Neutral Close koşullarında pozisyon kapatır
+### 📊 Canlı Veriler
+- **Gerçek Zamanlı Fiyat**: Binance API'den canlı fiyat takibi
+- **Hesap Özeti**: Toplam PNL, pozisyonlar, bakiye
+- **Haberler**: Crypto haberleri (Türkçe/İngilizce)
 
-### 📊 Gelişmiş Risk Yönetimi
-- 🎯 **Target PNL**: Hedef kar seviyesine ulaşınca otomatik kapat
-- 🛑 **Stop Loss (%)**: Belirlediğiniz zarar yüzdesinde pozisyonu kapat
-- ⚖️ **Neutral Close (%)**: Piyasa nötrken aşırı değişimlerde kapat
-- 💵 **Auto Balance (%)**: Bakiyenizin belirli yüzdesini otomatik kullan
-- 🔒 **Leverage Kontrolü**: 1x - 20x arası kaldıraç ayarı (lisanslı kullanıcılar için)
-
-### 🎮 Çoklu Coin Yönetimi
-- **100+ Coin Listesi**: Top 100 kripto para birimi desteği
-- **Çoklu Seçim**: Birden fazla coin'i aynı anda takip edin
-- **Arama Filtresi**: Hızlıca istediğiniz coin'i bulun
-- **Dinamik Kartlar**: Seçili coinler için gerçek zamanlı fiyat kartları
-
-### 🔐 Lisanslama Sistemi
-- **Ed25519 Dijital İmza**: Güvenli lisans doğrulama
-- **Makine Kilitleme**: Her lisans tek cihaza özel
-- **365 Gün Geçerlilik**: 1 yıllık kullanım süresi
-- **Kaldıraç Kısıtlaması**: Lisanssız kullanıcılar max 1x leverage
+### 🌍 Çoklu Dil Desteği
+25+ dil desteği (Türkçe, İngilizce, İspanyolca, Fransızca, Almanca, Rusça, Arapça, Çince, Japonca, Korece ve daha fazlası)
 
 ### 🔄 Otomatik Güncelleme
-- **GitHub Entegrasyonu**: Otomatik güncelleme kontrolü
-- **Tek Tık Güncelleme**: Yeni sürümleri otomatik indir ve kur
-- **Commit Takibi**: Git commit hash karşılaştırması ile versiyon kontrolü
-
-### 🌐 Test/Live Ortam Desteği
-- **Test Mode**: Binance Testnet ile risk almadan test edin
-- **Live Mode**: Gerçek para ile trading yapın
-- **Otomatik Bağlantı**: Kaydedilmiş API anahtarları ile otomatik giriş
-- **Dual Config**: Test ve Live için ayrı API key yönetimi
-
-### 📁 Veri Yönetimi
-- **Trading Geçmişi**: Tüm işlemler CSV dosyasında saklanır
-- **PNL Takibi**: Toplam kar/zarar hesaplamaları
-- **Fee Hesaplama**: Komisyon özetleri
-- **Ayar Kaydetme**: Tüm ayarlar otomatik kaydedilir (`ayarlar.txt`)
+GitHub üzerinden tek tıkla otomatik güncelleme
 
 ---
 
-## 📦 Kurulum
+## 📦 İndirme ve Kurulum
 
-### 1️⃣ Gereksinimleri Yükleyin
+### Windows (.exe)
+
+1. **[GitHub Releases](https://github.com/PlanC90/plancbinance/releases)** sayfasından `BinanceFuturesBot.exe` dosyasını indirin
+2. İndirilen `.exe` dosyasını çalıştırın
+3. Program otomatik olarak açılacaktır
+
+### macOS/Linux (Kaynak Kodu)
 
 ```bash
+# Repository'yi klonlayın
+git clone https://github.com/PlanC90/plancbinance.git
+cd plancbinance
+
+# Gereklilikler
 pip install -r requirements.txt
-```
 
-**Bağımlılıklar:**
-```
-python-binance>=1.0.19    # Binance API client
-requests>=2.31.0          # HTTP istekleri
-pillow>=10.0.0            # Görsel işleme
-pynacl>=1.5.0             # Ed25519 kriptografi
-```
-
-### 2️⃣ Bot'u Başlatın
-
-```bash
+# Programı başlatın
 python main.py
 ```
 
-### 3️⃣ İlk Kurulum (Otomatik)
+---
 
-Bot ilk açıldığında:
-1. ✅ Ayar dosyaları otomatik oluşturulur (`config.json`, `ayarlar.txt`)
-2. ✅ Top 100 coin listesi yüklenir (`coin100.txt`)
-3. ✅ Dil seçimi varsayılan olarak Türkçe
-4. ✅ Test mode aktif olarak başlar (güvenlik için)
+## 🔑 Hızlı Başlangıç
+
+### 1. API Anahtarları Alma
+
+1. [Binance](https://www.binance.com/en/my/settings/api-management) hesabınıza giriş yapın
+2. "API Oluştur" butonuna tıklayın
+3. İzinleri ayarlayın:
+   - ✅ Reading
+   - ✅ Futures
+   - ❌ Spot & Margin Trading (Güvenlik için kapalı tutun)
+   - ❌ Withdrawals (Mutlaka kapalı tutun!)
+4. API Key ve Secret Key'inizi kopyalayın
+
+### 2. Programı Çalıştırma
+
+1. **Test Modunda Başlatın** (Ortam: Test)
+2. API Key ve Secret Key'inizi girin
+3. "Bağlan" butonuna tıklayın
+4. ✅ "Bağlandı ✓" görünene kadar bekleyin
+
+### 3. Trading Yapmak İçin
+
+1. Sol panelden coin seçin
+2. Trading ayarlarınızı yapın:
+   - **Kaldıraç**: 1x - 5x (önerilen başlangıç)
+   - **Bakiye %**: 10% - 30% (önerilen)
+   - **Stop Loss**: 5% - 15%
+   - **Kar Al**: 3% - 10%
+3. ">> Oto Trade" butonuna tıklayın
+
+### 4. Pozisyon Kontrolü
+
+- **Açık Pozisyonlar** bölümünden aktif işlemlerinizi takip edin
+- Gerçek zamanlı PNL görüntüleyin
+- İstediğiniz pozisyonu manuel kapatabilirsiniz
 
 ---
 
-## 🎯 Hızlı Başlangıç Rehberi
+## 📖 Kullanım Kılavuzu
 
-### Adım 1: API Anahtarlarınızı Hazırlayın
+Programın içinde bulunan **"📖 Kullanım Kılavuzu"** butonuna tıklayarak detaylı kullanım bilgileri alabilirsiniz.
 
-#### Binance Testnet (Test için - Önerilen)
-1. [Binance Testnet](https://testnet.binancefuture.com/) adresine gidin
-2. GitHub hesabınızla giriş yapın
-3. Test API Key ve Secret oluşturun
-4. **10,000 USDT test parası** otomatik verilir
+### Önemli Ayarlar
 
-#### Binance Mainnet (Gerçek para ile)
-1. [Binance](https://www.binance.com/) hesabınıza giriş yapın
-2. **API Management** → **Create API**
-3. **İzinler:**
-   - ✅ Enable Reading
-   - ✅ Enable Futures
-   - ❌ Enable Withdrawals (GÜVENLİK!)
-4. IP kısıtlaması ekleyin (isteğe bağlı ama önerilen)
-
-### Adım 2: Bot'a Bağlanın
-
-1. **Test/Gerçek** seçimini yapın (üst kısımda)
-2. **API Key** ve **Secret** girin
-3. **"Bağlan"** butonuna tıklayın
-4. ✅ Bağlantı başarılı olursa bakiyeniz görünür
-
-### Adım 3: Coin Seçin
-
-1. **"Listeyi Yenile"** ile 100+ coin listesini yükleyin
-2. **Arama** kutusundan coin arayın (örn: BTC, ETH)
-3. İstediğiniz coinleri **seçin** (checkbox)
-4. **"Seçilenleri Ekle"** ile kartları oluşturun
-
-### Adım 4: Trading Ayarlarını Yapın
-
-```
-💵 Pozisyon Boyutu: 100 USDT      # Her işlemde kullanılacak miktar
-📈 Kaldıraç: 5x                   # 1-20x arası (lisanslı kullanıcılar)
-🎯 Hedef PNL: 20 USDT             # Bu kara ulaşınca kapat
-🛑 Stop Loss: 10%                 # %10 zarar olursa kapat
-⚖️ Nötr Kapat: 2%                 # Piyasa nötrken %2 değişimde kapat
-💰 Oto Bakiye: 0%                 # 0 ise sabit miktar kullanır
-```
-
-### Adım 5: Manuel veya Otomatik İşlem
-
-#### Manuel Trading:
-1. Bir coin kartına tıklayın
-2. **LONG** (yükseliş) veya **SHORT** (düşüş) butonuna basın
-3. Pozisyon anında açılır
-
-#### Otomatik Trading:
-1. **">> Oto Trade"** butonuna tıklayın
-2. Bot piyasayı analiz eder (30 saniyede bir)
-3. Uygun koşullarda otomatik pozisyon açar/kapatır
-4. **Tekrar basarak** durdurabilirsiniz
+| Ayar | Önerilen Değer | Açıklama |
+|------|----------------|----------|
+| Piyasa Trend Eşiği | 60 | Piyasanın yükseliş/düşüş sayısı |
+| Momentum Kaybı Eşiği | 8 | Pozisyonların kapanacağı değişim miktarı |
+| Kaldıraç | 1x - 3x | Başlangıç için düşük kaldıraç |
+| Stop Loss | 10% | Zarar durdurma yüzdesi |
+| Kar Al | 3% | Otomatik kar alma yüzdesi |
+| Piyasa Kontrol Süresi | 60 saniye | Piyasa analizi aralığı |
 
 ---
 
-## 🛠️ Detaylı Kullanım
+## 🔐 Lisans
 
-### Otomatik Trading Mantığı
+### Lisanssız Kullanım
+- **Maksimum Kaldıraç**: 1x
+- Özellik kısıtlaması yok
+- Tüm trading özellikleri aktif
 
-Bot şu stratejiye göre çalışır:
+### Lisanslı Kullanım
+- **Maksimum Kaldıraç**: 20x
+- Daha yüksek potansiyel karlar
+- Profesyonel trading için ideal
 
-```python
-# 1. Market Breadth Analizi
-Top 100 coin → 1 saatlik değişim hesapla
-Yükselen > 50 → Piyasa yükseliyor 📈
-Düşen > 50   → Piyasa düşüyor 📉
-Diğer        → Piyasa nötr ⚖️
+### Lisans Alma
+**Yalnızca resmi siteden**: [https://license.planc.space/](https://license.planc.space/)
 
-# 2. 3-Coin Rule (Trend Latching)
-Seçili coinlerden 3 tanesi aynı yönde → Trend latch
-Örnek: BTC ↑, ETH ↑, SOL ↑ → LONG pozisyon aç
-
-# 3. Otomatik Pozisyon Açma
-IF piyasa_yukseliyor AND long_pozisyon_yok:
-    → LONG aç
-    
-IF piyasa_dusuyor AND short_pozisyon_yok:
-    → SHORT aç
-
-# 4. Otomatik Kapama
-IF kar >= hedef_pnl:
-    → Pozisyonu kapat (kar al)
-    
-IF zarar >= stop_loss:
-    → Pozisyonu kapat (zararı durdur)
-    
-IF piyasa_notr AND degisim > neutral_close:
-    → Pozisyonu kapat (risk azalt)
-```
-
-### Piyasa Kontrol Aralığı
-
-```
-⏱️ Min: 30 saniye  (API rate limit koruması)
-⏱️ Önerilen: 30-60 saniye
-⏱️ Güncelleme: Ayarlardan değiştirilebilir
-```
-
-### Pozisyon Yönetimi
-
-- **Pozisyon Tablosu**: Tüm açık pozisyonlar gerçek zamanlı görünür
-- **Tek Tıkla Kapat**: Bir pozisyonu seçip "Seçiliyi Kapat"
-- **Toplu Kapat**: "Tüm İşlemleri Kapat" ile hepsini kapat
-- **PNL Göstergesi**: Her pozisyonun anlık kar/zarar durumu
+⚠️ **ÖNEMLİ**: Başka kaynaklardan alınan lisanslar kullanılamaz ve programı bozabilir!
 
 ---
 
-## 🔐 Güvenlik Önlemleri
+## ⚠️ Risk Uyarısı
 
-### ⚠️ ÖNEMLİ: API Güvenliği
-
-```bash
-# 1. config.json dosyasını asla paylaşMAYIN!
-# 2. .gitignore'a ekleyin:
-echo "config.json" >> .gitignore
-echo "ayarlar.txt" >> .gitignore
-echo "*.csv" >> .gitignore
-
-# 3. Binance API ayarlarında:
-✅ Enable Reading
-✅ Enable Futures
-❌ Enable Withdrawals (KAPALI TUTUN!)
-✅ IP Restriction (Önerilen)
-```
-
-### 🔒 Lisans Güvenliği
-
-- **Ed25519 Dijital İmza**: Sahte lisanslar çalışmaz
-- **Makine Kilitleme**: Windows MachineGuid kontrolü
-- **Süre Kontrolü**: 365 gün sonra yenileme gerekir
-
-### 🛡️ Risk Yönetimi
-
-```
-⚠️ UYARILAR:
-1. Küçük miktarlarla başlayın (100-500 USDT)
-2. Yüksek kaldıraçtan kaçının (max 5-10x)
-3. Her zaman Stop Loss kullanın
-4. Bakiyenizin sadece %1-2'sini riske edin
-5. İlk önce TEST modunda pratik yapın
-```
+1. **Test Modu ile Başlayın**: İlk kullanım için mutlaka test modunda deneyin
+2. **Sadece Kaybetmeyi Göze Alabileceğiniz Para**: Tüm tasarrufunuzu yatırmayın
+3. **Stop Loss Kullanın**: Her zaman stop loss kullanın
+4. **Kaldıraç Riskini Anlayın**: Yüksek kaldıraç = yüksek risk
+5. **Past Performance ≠ Future Results**: Geçmiş karlar gelecek sonuçları garanti etmez
 
 ---
 
-## 📁 Proje Yapısı
+## 🆘 Destek
 
-```
-v5/
-├── api/                          # API katmanı
-│   └── clients.py               # Binance client yönetimi
-├── core/                         # Temel sistem
-│   ├── config.py                # Yapılandırma yönetimi
-│   └── logging.py               # Log buffer sistemi
-├── services/                     # İş mantığı
-│   ├── account.py               # Hesap servisi (cache'li)
-│   └── market.py                # Piyasa veri servisi
-├── tools/                        # Yardımcı araçlar
-│   └── generate_license.py      # Lisans üreticisi
-├── licenses/                     # Lisans sistemi
-│   └── verify.py                # Ed25519 doğrulama
-├── locales/                      # Çoklu dil
-│   └── langs.py                 # 31 dil çevirisi
-├── main.py                       # Ana uygulama (4550 satır)
-├── updater.py                    # Otomatik güncelleme
-├── config.json                   # API anahtarları (GİZLİ!)
-├── ayarlar.txt                   # Kullanıcı ayarları
-├── coin100.txt                   # Top 100 coin listesi
-├── requirements.txt              # Python bağımlılıkları
-├── trades_history.csv            # İşlem geçmişi
-├── trades_history_test.csv       # Test işlem geçmişi
-├── totals_history.csv            # Toplam PNL geçmişi
-└── README.md                     # Bu dosya
-```
+- **Website**: [https://planc.space](https://planc.space)
+- **Lisans**: [https://license.planc.space/](https://license.planc.space/)
+- **Email**: support@planc.space
+- **GitHub**: [https://github.com/PlanC90/plancbinance](https://github.com/PlanC90/plancbinance)
 
 ---
 
-## 🌐 Dil Değiştirme
+## 🔄 Güncelleme
 
-```
-1. Sol üst köşedeki "Dil / Language" menüsünü açın
-2. İstediğiniz dili seçin
-3. Tüm arayüz anında güncellenir
-```
+Program otomatik olarak GitHub'dan güncellemeleri kontrol eder:
+- Başlangıçta otomatik kontrol (3 saniye sonra)
+- "[↓] Update" butonu ile manuel kontrol
+- Yeni güncelleme varsa otomatik bildirim
 
-**Desteklenen 31 Dil:**
-İngilizce, Türkçe, Arapça, Çince, Rusça, İspanyolca, Fransızca, Almanca, Portekizce, Hintçe, Japonca, Korece, İtalyanca, Hollandaca, Lehçe, Farsça, Endonezce, Tayca, Vietnamca, Ukraynaca, Romence, Çekçe, İsveççe, Yunanca, İbranice, Macarca, Bengalce, Malayca, Tamilce, Urduca, Rusça
-
----
-
-## 🔄 Otomatik Güncelleme
-
-Bot başlatıldığında otomatik olarak güncellemeleri kontrol eder.
-
-### Manuel Güncelleme:
-1. **"[↓] Güncelle"** butonuna tıklayın
-2. Yeni sürüm varsa bildirim gelir
-3. **"Güncelle"** ile kurulum başlar
-4. Program otomatik yeniden başlar
-
-### GitHub Repo:
-```
-https://github.com/PlanC90/tradebot
-```
+### Manuel Güncelleme
+1. GitHub'dan en son release'i indirin
+2. Eski programı kapatın
+3. Yeni `.exe` dosyasını çalıştırın
 
 ---
 
-## ❓ Sık Sorulan Sorular (SSS)
+## 📝 Değişiklik Geçmişi
 
-### Bağlantı Sorunları
-
-**S: "API connection error" hatası alıyorum?**
-- API Key ve Secret doğru mu kontrol edin
-- Futures Trading izninin açık olduğundan emin olun
-- Test/Live ortam seçimini doğrulayın
-- İnternet bağlantınızı kontrol edin
-
-**S: "Insufficient margin" hatası?**
-- Bakiyenizde yeterli USDT var mı?
-- Pozisyon boyutu çok büyük olabilir
-- Kaldıraç ayarını düşürün
-
-### Trading Sorunları
-
-**S: Otomatik trade çalışmıyor?**
-- En az 3 coin seçili olmalı (3-coin rule için)
-- Market interval min 30 saniye olmalı
-- Piyasa durumu değişmeden pozisyon açılmaz
-
-**S: Pozisyon açılmıyor?**
-- Minimum order miktarını karşılıyor musunuz?
-- Rate limit'e takılmış olabilirsiniz (30sn bekleyin)
-- Symbol için futures trading aktif mi?
-
-### Lisans Sorunları
-
-**S: 3x üzeri kaldıraç kullanamıyorum?**
-- Aktif lisans gereklidir
-- Lisans satın almak için: `https://license.planc.space/`
-
-**S: Lisans sürem doldu?**
-- "Lisans Al" butonundan yeni lisans alın
-- Yıllık yenileme gereklidir
+### v1.0.0 (Mevcut)
+- ✅ Multi-coin trading desteği
+- ✅ Otomatik piyasa analizi
+- ✅ Momentum kaybı koruması
+- ✅ 25+ dil desteği
+- ✅ Otomatik güncelleme sistemi
+- ✅ Binance Testnet desteği
+- ✅ Gerçek zamanlı haberler
 
 ---
 
-## 📊 Performans İpuçları
+## 🤝 Katkıda Bulunma
 
-### API Optimizasyonu
-```python
-# Bot otomatik cache kullanır:
-Account Data: 30 saniye cache
-Positions: 5 saniye cache
-Market Data: Ayarlanabilir interval (min 30s)
-```
-
-### CPU/RAM Kullanımı
-```
-Normal: ~50-100 MB RAM
-Thread sayısı: 3 (price, market, summary)
-GUI güncellemeleri: Thread-safe batch işleme
-```
-
----
-
-## 🚨 Sorumluluk Reddi
-
-```
-⚠️ ÖNEMLİ UYARILAR:
-
-1. Bu yazılım SADECE EĞİTİM AMAÇLIDIR
-2. Finansal tavsiye DEĞİLDİR
-3. Gerçek para kaybı riski vardır
-4. Kripto piyasaları YÜKSEK RİSKLİDİR
-5. Sadece kaybetmeyi göze alabileceğiniz para ile işlem yapın
-6. Yazılım geliştiricisi hiçbir kayıptan sorumlu değildir
-7. Kendi araştırmanızı yapın (DYOR)
-8. Profesyonel finansal danışman görüşü alın
-
-KENDİ SORUMLULUĞUNUZDA KULLANIN!
-```
-
----
-
-## 📞 Destek ve İletişim
-
-- 🌐 **Web**: [https://planc.space](https://planc.space)
-- 📧 **Email**: Destek için web sitesinden iletişime geçin
-- 📝 **Lisans**: [https://license.planc.space/](https://license.planc.space/)
-- 🐛 **Bug Report**: GitHub Issues
+Katkılarınızı bekliyoruz!
+1. Fork edin
+2. Feature branch oluşturun (`git checkout -b feature/AmazingFeature`)
+3. Commit edin (`git commit -m 'Add some AmazingFeature'`)
+4. Push edin (`git push origin feature/AmazingFeature`)
+5. Pull Request açın
 
 ---
 
 ## 📄 Lisans
 
-**Commercial License** - Ticari kullanım için lisans gereklidir.
+Bu yazılım ticari bir üründür. Tüm hakları PlanC'ye aittir.
+
+Kullanım için lisans şartları:
+- Kişisel veya ticari kullanım için lisans gerekir
+- Lisanssız kullanımda maksimum 1x kaldıraç
+- Lisans için: [https://license.planc.space/](https://license.planc.space/)
 
 ---
 
-## 🎉 Teşekkürler
+## 🌟 Özellik İstekleri
 
-Bu projeyi kullandığınız için teşekkür ederiz! 
-
-**💰 İyi Ticaretler!**
+Gerçekleştirmek istediğiniz özellikler için:
+- **GitHub Issues**: [https://github.com/PlanC90/plancbinance/issues](https://github.com/PlanC90/plancbinance/issues)
+- **Email**: support@planc.space
 
 ---
 
-<div align="center">
+## ⭐ Projeyi Beğendiniz mi?
 
-**Made with ❤️ by PlanC.Space**
+GitHub'da ⭐ vererek bizi destekleyebilirsiniz!
 
-[🌐 Website](https://planc.space) • [📦 Lisans Al](https://license.planc.space/) • [🔄 Güncellemeler](https://github.com/PlanC90/tradebot)
+---
 
-</div>
+**© 2025 PlanC. Tüm hakları saklıdır.**
+
+**NOTLAR:**
+- Bu bot karlılık garantisi vermez
+- Crypto trading yüksek risk taşır
+- Sadece kaybetmeyi göze alabileceğiniz para ile trade yapın
+- Kaldıraç risklerini iyi anlayın
+- İlk başlarda küçük miktarlarla test edin
+
